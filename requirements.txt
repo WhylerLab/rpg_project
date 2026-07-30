@@ -1,0 +1,2 @@
+# Aktuell keine externen Abhängigkeiten (reines Vanilla-Python).
+# Für die spätere Pygame-Version separat: pygame
