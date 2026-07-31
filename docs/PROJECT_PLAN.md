@@ -20,9 +20,9 @@ statt. Nach jedem gewonnenen Kampf wird gefragt, ob gespeichert werden soll.
 
 | Biom | Normal | Champion | Elite |
 |---|---|---|---|
-| Friedhof | Skelett | Zombie | TBD |
-| Düsterer Wald | TBD | TBD | TBD |
-| Dunkles Verließ | TBD | TBD | TBD |
+| Friedhof | Skelett | Zombie | Lich |
+| Düsterer Wald | Wolf | Werwolf | Alpha-Werwolf |
+| Dunkles Verließ | Ratte | Goblin | Oger |
 
 Champion/Elite nutzen dieselben 4 Aktionen wie Normal-Gegner — keine
 Sonderangriffe, nur stärkere Werte.

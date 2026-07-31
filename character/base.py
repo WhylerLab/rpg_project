@@ -3,6 +3,7 @@
 class Character:
     """Basisklasse für alle Charaktere (Spieler und Gegner)."""
 
+
     def __init__(self, name, hp, attack, defense):
         self.name = name
         self.hp = hp
@@ -10,14 +11,18 @@ class Character:
         self.attack = attack
         self.defense = defense
 
+
     def take_damage(self, amount):
-        # HP reduzieren, dabei nicht unter 0 fallen lassen
-        pass
+        self.hp = self.hp - amount
+        if self.hp < 0:
+            self.hp = 0
+
 
     def heal(self, amount):
-        # HP erhöhen, dabei nicht über max_hp steigen lassen
-        pass
+        self.hp = self.hp + amount
+        if self.hp > self.max_hp:
+            self.hp = self.max_hp
+
 
     def is_alive(self):
-        # True/False je nach aktuellem HP-Stand
-        pass
+        return self.hp > 0
