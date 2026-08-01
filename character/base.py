@@ -12,6 +12,10 @@ class Character:
         self.defense = defense
 
 
+    def __str__(self):
+        return f"{self.name} (HP: {self.hp}/{self.max_hp})"
+
+
     def take_damage(self, amount):
         self.hp = self.hp - amount
         if self.hp < 0:
