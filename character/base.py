@@ -1,4 +1,6 @@
 # character/base.py
+from exceptions.custom_exceptions import HealLimitReachedError
+
 
 class Character:
     """Basisklasse für alle Charaktere (Spieler und Gegner)."""
@@ -10,6 +12,8 @@ class Character:
         self.max_hp = hp
         self.attack = attack
         self.defense = defense
+        self.defending = False
+        self.heal_count = 6
 
 
     def __str__(self):
@@ -23,10 +27,13 @@ class Character:
 
 
     def heal(self, amount):
-        self.hp = self.hp + amount
-        if self.hp > self.max_hp:
-            self.hp = self.max_hp
-
+        if self.heal_count > 0:
+            self.hp = self.hp + amount
+            if self.hp > self.max_hp:
+                self.hp = self.max_hp
+            self.heal_count -= 1
+        else:
+            raise HealLimitReachedError("Du hast keine Heilung mehr übrig.")
 
     def is_alive(self):
         return self.hp > 0
