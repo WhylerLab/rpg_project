@@ -38,7 +38,7 @@ Rundenbasiert. Pro Runde wählt jede Partei eine Aktion:
 - **Angriff (leicht)** — geringerer Schaden, (höhere Trefferchance, optional)
 - **Angriff (schwer)** — höherer Schaden, (geringere Trefferchance, optional)
 - **Abwehr** — reduziert eingehenden Schaden in der Folgerunde
-- **Heilung** — stellt HP wieder her, **max. 2× pro Kampf**, gilt für Spieler
+- **Heilung** — stellt HP wieder her, **max. 6× pro Durchlauf**, gilt für Spieler
   UND Gegner gleichermaßen
 
 Zusätzlich nur für den Spieler:
