@@ -76,8 +76,12 @@ noch in derselben Runde gegen den nachfolgenden Gegnerangriff.
 
 ## 3a. Niederlage & Sieg
 
-**Niederlage** (Spieler-HP fällt auf 0): Game-Over-Meldung, danach Angebot,
-den letzten Spielstand zu laden. Kein automatischer Neustart.
+**Bei erfolgreicher Flucht**: nur der AKTUELLE Kampf wird neu gestartet
+(gleicher Biom/Typ, frischer Gegner), der restliche Durchlauf bleibt
+unverändert.
+
+**Niederlage**: ein eventuell vorhandener Spielstand wird GELÖSCHT,
+Rückkehr zum Hauptmenü (kompletter Neustart nötig).
 
 **Sieg** (alle 3 Biome / 9 Kämpfe abgeschlossen): Abschlussmeldung an den
 Spieler. Kein weiterer Mechanismus (z. B. kein Score-Screen) vorgesehen —
@@ -127,6 +131,9 @@ Kein Level-System. Fortschritt ausschließlich über Ausrüstung:
 - [ ] Upgrade-Kosten-Formel für Waffe/Rüstung
 - [ ] Start-Equipment-Werte des Spielers
 - [ ] Exakte Gewichtungswerte der Gegner-KI (`random.choices`-Weights)
+- [ ] config.py für zentrale Start-Werte (Spieler attack/defense/hp aktuell
+      direkt in main.py verstreut, an zwei Stellen — Neues Spiel UND Laden.
+      Zentrale Konstanten würden Wiederholung vermeiden.)
 
 ## 7. Bewusst NICHT im Scope (mögliche spätere Erweiterung)
 

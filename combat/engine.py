@@ -46,7 +46,7 @@ def run_combat(player, enemy):
             flee_throw = random.randint(1, 100)
             if flee_throw <= enemy.flee_chance:
                 print("Flucht ist geglückt!")
-                break
+                return "flucht"
             else:
                 print("Flucht ist gescheitert!")
 
@@ -57,7 +57,7 @@ def run_combat(player, enemy):
 
         if not enemy.is_alive():
             print(f"Du hast {enemy.name} besiegt!")
-            break
+            return "sieg"
 
 
         enemy_actions =[1, 2, 3, 4]
@@ -94,7 +94,7 @@ def run_combat(player, enemy):
 
         if not player.is_alive():
             print("Deine Reise hat ein jähes Ende erlitten.")
-            break
+            return "niederlage"
 
 
         player.defending = False

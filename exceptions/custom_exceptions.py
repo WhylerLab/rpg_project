@@ -1,7 +1,7 @@
 # exceptions/custom_exceptions.py
 
 class RPGError(Exception):
-    """Basisklasse für alle spielspezifischen Fehler."""    # (""" Sin Docstrings """ Zeilenumbrüche müssen nicht manuel Escaped werden)
+    """Basisklasse für alle spielspezifischen Fehler."""    # (""" Sind Docstrings """ Zeilenumbrüche müssen nicht manuel Escaped werden)
     pass
 
 
@@ -11,7 +11,7 @@ class InvalidActionError(RPGError):
 
 
 class HealLimitReachedError(RPGError):
-    """Wird ausgelöst, wenn Heilung öfter als erlaubt genutzt wird."""      # Da nur 2x Pro Kampf erlaubt ist
+    """Wird ausgelöst, wenn Heilung öfter als erlaubt genutzt wird."""
     pass
 
 
