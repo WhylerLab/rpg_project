@@ -21,6 +21,8 @@ class Character:
 
 
     def take_damage(self, amount):
+        if self.defending:
+            amount = amount / 2
         self.hp = self.hp - amount
         if self.hp < 0:
             self.hp = 0

@@ -14,19 +14,23 @@ def run_combat(player, enemy):
 
         player_action = int(input("Was möchtest du tun: "))
 
+
         if player_action == 1:
             schaden = player.attack + player.weapon.get_attack_bonus()
             enemy.take_damage(schaden)
             print (f"Du greifst mit einem leichten Angriff an. {enemy.name} erleidet {schaden}")
+
 
         elif player_action == 2:
             schaden = (player.attack + player.weapon.get_attack_bonus())*1.5
             enemy.take_damage(schaden)
             print (f"Du greifst mit einem schweren Angriff an. {enemy.name} erleidet {schaden}")
 
+
         elif player_action == 3:
             player.defending = True
             print("Du gehst in die Verteidigung.")
+
 
         elif player_action == 4:
             try:
@@ -45,22 +49,53 @@ def run_combat(player, enemy):
                 break
             else:
                 print("Flucht ist gescheitert!")
-            
+
+
         else:
             raise InvalidActionError()
 
 
-        # 2. Falls Fliehen erfolgreich -> break (kein Gold, Kampf vorbei)
+        if not enemy.is_alive():
+            print(f"Du hast {enemy.name} besiegt!")
+            break
 
-        # 3. Aktion ausführen (Schaden/Heilung/Abwehr)
 
-        # 4. Gegner besiegt? -> break (Sieg)
+        enemy_actions =[1, 2, 3, 4]
+        enemy_weights=[40, 30, 20, 10]
 
-        # 5. Gegner wählt Aktion (gewichtet)
+        calledAction = random.choices(enemy_actions, weights=enemy_weights, k=1)[0]
 
-        # 6. Gegner-Aktion ausführen
 
-        # 7. Spieler besiegt? -> break (Niederlage)
+        if calledAction == 1:
+            schaden = enemy.attack
+            player.take_damage(schaden)
+            print (f"{enemy.name} greift mit leichten Angriff an. Du erleidest {schaden}")
+
+
+        elif calledAction == 2:
+            schaden = (enemy.attack)*1.5
+            player.take_damage(schaden)
+            print (f"{enemy.name} greift mit schweren Angriff an. Du erleidest {schaden}")
+
+
+        elif calledAction == 3:
+            enemy.defending = True
+            print(f"{enemy.name} geht in die Verteidigung.")
+
+
+        elif calledAction == 4:
+            try:
+                heilwert = enemy.max_hp * 0.25
+                enemy.heal(heilwert)
+                print(f"{enemy.name} heilt sich um {heilwert}")
+            except HealLimitReachedError:
+                print(f"{enemy.name} kann sich nicht mehr heilen.")
+
+
+        if not player.is_alive():
+            print("Deine Reise hat ein jähes Ende erlitten.")
+            break
+
 
         player.defending = False
         enemy.defending = False
