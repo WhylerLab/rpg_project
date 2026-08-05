@@ -101,7 +101,7 @@ def main():
                     break
 
     print("\n" + "=" * 40)
-    print(f"🎉 Glückwunsch, {player.name}! Du hast alle drei Biome überstanden!")
+    print(f"Glückwunsch, {player.name}! Du hast alle drei Biome überstanden!")
     print("=" * 40)
 
 
