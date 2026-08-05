@@ -104,5 +104,4 @@ def main():
     print(f"Glückwunsch, {player.name}! Du hast alle drei Biome überstanden!")
     print("=" * 40)
 
-
 main()
