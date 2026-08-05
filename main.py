@@ -9,7 +9,9 @@ import os
 
 def main():
     # Menu
-    print("Mini RPG-Quest")
+    print("=" * 40)
+    print("       MINI RPG-QUEST")
+    print("=" * 40)
     print("""1. Neues Spiel
 2. Spielstand laden
 3. Spiel beenden
@@ -45,15 +47,40 @@ def main():
     for biom in player_walkthrough:
         aktueller_index = player_walkthrough.index(biom)
         remaining_biomes = player_walkthrough[aktueller_index + 1:]
+        print(f"\nDu betrittst: {biom.capitalize()}")
 
         for fight_index, typ in enumerate(enemy_types):
             enemy_data = ENEMY_DATA[biom][typ]
 
             while True:
                 enemy = Enemy(enemy_data["name"], enemy_data["hp"], enemy_data["attack"], enemy_data["defense"], typ, enemy_data["flee_chance"], enemy_data["gold_reward"])
+                print(f"\nEin {enemy.name} ({typ.capitalize()}) erscheint!")
+                print(player)
+                print("-" * 40)
                 ergebnis = run_combat(player, enemy)
 
                 if ergebnis == "sieg":
+                    player.gold += enemy_data["gold_reward"]
+                    print(f"Du erhältst {enemy_data['gold_reward']} Gold! (Gesamt: {player.gold})")
+
+                    upgrade_wahl = input("Equipment verbessern? (w=Waffe, r=Rüstung, n=nein): ")
+                    if upgrade_wahl == "w":
+                        kosten = 20 * player.weapon.level
+                        if player.gold >= kosten:
+                            player.weapon.upgrade()
+                            player.gold -= kosten
+                            print(f"Waffe verbessert! Neue Stufe: {player.weapon.level}")
+                        else:
+                            print(f"Nicht genug Gold. Kosten: {kosten}, du hast: {player.gold}")
+                    elif upgrade_wahl == "r":
+                        kosten = 20 * player.armor.level
+                        if player.gold >= kosten:
+                            player.armor.upgrade()
+                            player.gold -= kosten
+                            print(f"Rüstung verbessert! Neue Stufe: {player.armor.level}")
+                        else:
+                            print(f"Nicht genug Gold. Kosten: {kosten}, du hast: {player.gold}")
+
                     speichern = input("Möchtest du speichern? (j/n): ")
                     if speichern == "j":
                         save_game(player, biom, fight_index, remaining_biomes)
@@ -72,5 +99,10 @@ def main():
                     print("Du versuchst dein Glück noch einmal...")
                 else:
                     break
+
+    print("\n" + "=" * 40)
+    print(f"🎉 Glückwunsch, {player.name}! Du hast alle drei Biome überstanden!")
+    print("=" * 40)
+
 
 main()
